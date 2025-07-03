@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Online Exa+m</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="exam-container">
+        <div class="exam-header">
+            <h1 class="exam-title">JavaScript </h1>
+            <p class="exam-subtitle">Test Your JavaScript </p>
+            <div class="timer-display" id="timer">50:00</div>
+        </div>
+
+        <div class="exam-content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <h2>Welcome to JavaScript Exam</h2>
+                <div class="exam-instructions">
+                    <h3>Exam Instructions</h3>
+                    <ul>
+                        <li>This exam contains 50 multiple-choice questions</li>
+                        <li>Total time allowed: 50 minutes</li>
+                        <li>Each question has 4 options, select the best answer</li>
+                        <li>You can navigate between questions using Next/Back buttons</li>
+                        <li>Click Submit when you're ready to finish the exam</li>
+                        <li>Your results will be emailed to you after submission</li>
+                        <li>Timer will start when you click the Start Exam button</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" onclick="startExam()">Start Exam</button>
+            </div>
+
+            <!-- Question Screen -->
+            <div class="question-container" id="questionContainer">
+                <div class="question-header">
+                    <div class="question-number" id="questionNumber">Question 1 of 50</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <div class="question-text" id="questionText"></div>
+                
+                <div class="options-container" id="optionsContainer"></div>
+                
+                <div class="navigation">
+                    <button class="btn btn-secondary" id="backBtn" onclick="previousQuestion()" disabled>Back</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+                    <button class="btn btn-success hidden" id="submitBtn" onclick="submitExam()">Submit Exam</button>
+                </div>
+            </div>
+
+            <!-- Result Screen -->
+            <div class="result-screen" id="resultScreen">
+                <h2 class="result-header">Exam Completed!</h2>
+                <div class="score-display" id="scoreDisplay"></div>
+                
+                <div class="score-breakdown">
+                    <div class="score-item">
+                        <h4>Total Questions</h4>
+                        <div class="score-value">50</div>
+                    </div>
+                    <div class="score-item">
+                        <h4>Correct Answers</h4>
+                        <div class="score-value" id="correctAnswers">0</div>
+                    </div>
+                    <div class="score-item">
+                        <h4>Wrong Answers</h4>
+                        <div class="score-value" id="wrongAnswers">0</div>
+                    </div>
+                    <div class="score-item">
+                        <h4>Time Taken</h4>
+                        <div class="score-value" id="timeTaken">00:00</div>
+                    </div>
+                </div>
+
+                <div class="email-section">
+                    <h3>Get Your Results via Email</h3>
+                    <input type="email" class="email-input" id="emailInput" placeholder="Enter your email address" required>
+                    <button class="btn btn-primary" onclick="sendResults()">
+                        <span id="emailBtnText">Send Results</span>
+                        <span class="loading hidden" id="emailLoading"></span>
+                    </button>
+                </div>
+
+                <button class="btn btn-secondary" onclick="restartExam()">Take Exam Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
